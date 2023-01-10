@@ -777,7 +777,7 @@ class KGUV9DPlusRadio(chirp_common.CloneModeRadio,
     VENDOR = "Wouxun"
     MODEL = "KG-UV9D Plus"
     _model = b"KG-UV9D"
-    _rev = "00"  # default rev for the radio I know about...
+    _rev = b"00"  # default rev for the radio I know about...
     _file_ident = b"kg-uv9d"
     BAUD_RATE = 19200
     POWER_LEVELS = [chirp_common.PowerLevel("L", watts=1),
