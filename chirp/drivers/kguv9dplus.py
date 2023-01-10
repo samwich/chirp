@@ -678,7 +678,7 @@ def _hex_print(data, addrfmt=None):
 
     block_size = 16
 
-    lines = (len(data) / block_size)
+    lines = (len(data) // block_size)
     if (len(data) % block_size > 0):
         lines += 1
 
@@ -776,7 +776,7 @@ class KGUV9DPlusRadio(chirp_common.CloneModeRadio,
     """Wouxun KG-UV9D Plus"""
     VENDOR = "Wouxun"
     MODEL = "KG-UV9D Plus"
-    _model = "KG-UV9D"
+    _model = b"KG-UV9D"
     _rev = "00"  # default rev for the radio I know about...
     _file_ident = b"kg-uv9d"
     BAUD_RATE = 19200
@@ -882,7 +882,7 @@ class KGUV9DPlusRadio(chirp_common.CloneModeRadio,
         raise Exception("All retries to identify failed")
 
     def process_mmap(self):
-        if self._rev == "02" or self._rev == "00":
+        if self._rev == b"02" or self._rev == b"00":
             self._memobj = bitwise.parse(_MEM_FORMAT02, self._mmap)
         else:  # this is where you elif the other variants and non-Plus  radios
             raise errors.RadioError(
@@ -1441,10 +1441,10 @@ class KGUV9DPlusRadio(chirp_common.CloneModeRadio,
             setting.value = pw2str(obj.reset)
 
         def apply_wake(setting, obj):
-            obj.wake = int(setting.value)/10
+            obj.wake = int(setting.value)/10 # TODO
 
         def apply_sleep(setting, obj):
-            obj.sleep = int(setting.value)/10
+            obj.sleep = int(setting.value)/10 # TODO
 
         pw = self._memobj.passwords  # admin passwords
         s = self._memobj.settings
@@ -1610,11 +1610,11 @@ class KGUV9DPlusRadio(chirp_common.CloneModeRadio,
         """
         def apply_freq(setting, lo, hi, obj):
             f = freq2int(setting.value, lo, hi)
-            obj.freq = f/10
+            obj.freq = f/10 #TODO
 
         def apply_offset(setting, obj):
             f = freq2int(setting.value, 0, 5000000)
-            obj.offset = f/10
+            obj.offset = f/10 #TODO
 
         def apply_enc(setting, obj):
             t = tone2short(setting.value)
