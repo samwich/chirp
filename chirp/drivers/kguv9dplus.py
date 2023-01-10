@@ -1441,10 +1441,10 @@ class KGUV9DPlusRadio(chirp_common.CloneModeRadio,
             setting.value = pw2str(obj.reset)
 
         def apply_wake(setting, obj):
-            obj.wake = int(setting.value)/10 # TODO
+            obj.wake = int(setting.value)/10
 
         def apply_sleep(setting, obj):
-            obj.sleep = int(setting.value)/10 # TODO
+            obj.sleep = int(setting.value)/10
 
         pw = self._memobj.passwords  # admin passwords
         s = self._memobj.settings
@@ -1610,11 +1610,11 @@ class KGUV9DPlusRadio(chirp_common.CloneModeRadio,
         """
         def apply_freq(setting, lo, hi, obj):
             f = freq2int(setting.value, lo, hi)
-            obj.freq = f/10 #TODO
+            obj.freq = f/10
 
         def apply_offset(setting, obj):
             f = freq2int(setting.value, 0, 5000000)
-            obj.offset = f/10 #TODO
+            obj.offset = f/10
 
         def apply_enc(setting, obj):
             t = tone2short(setting.value)
